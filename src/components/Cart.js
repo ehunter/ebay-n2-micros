@@ -5,7 +5,6 @@ import cartIcon from '../assets/icn_cart.svg';
 
 import '../main.css';
 
-
 class Cart extends Component {
   constructor(props) {
     super(props);

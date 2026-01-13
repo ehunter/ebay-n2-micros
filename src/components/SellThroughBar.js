@@ -11,15 +11,15 @@ class SellThroughBar extends Component {
 
   render() {
     var barClass = classNames('sell-through-bar', this.props.className, {
-      'pulse red-bg': this.props.itemsSold > this.props.lowQuanityMax
+      'pulse red-bg': this.props.itemsSold > this.props.lowQuantityMax
     });
 
     var barContainerClass = classNames('sell-through-bar-container', this.props.className, {
-      'red-border': this.props.itemsSold > this.props.lowQuanityMax
+      'red-border': this.props.itemsSold > this.props.lowQuantityMax
     });
 
     var itemCountClass = classNames('sell-through-count', this.props.className, {
-      'red': this.props.itemsSold > this.props.lowQuanityMax
+      'red': this.props.itemsSold > this.props.lowQuantityMax
     });
 
     return (
