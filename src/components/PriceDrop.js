@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
 import classNames from 'classnames';
 
 import '../main.css';
@@ -10,13 +9,14 @@ class PriceDrop extends Component {
   constructor(props) {
     super(props);
     this.defaultDelay = 135;
+    this.newestPriceRef = React.createRef();
   }
 
   componentDidMount() {
     // we need the width of the new price element to determine
     // the Y position for the old price to animate to.
-    var amountToSlideRight = 
-      window.getComputedStyle(ReactDOM.findDOMNode(this.refs.newestPrice)).width;
+    var amountToSlideRight =
+      window.getComputedStyle(this.newestPriceRef.current).width;
     document.documentElement.style.setProperty('--initPriceWidth', amountToSlideRight);
     // now find the old price and add the animation class
     var container  = document.getElementById('initialPriceContainer')
@@ -28,7 +28,7 @@ class PriceDrop extends Component {
     return (
       <div>
         <div id="price-drop" className="price-drop">
-        <p className="price new" ref="newestPrice" style={{animationDelay: this.calculateDelay(5)}}>{this.props.newPrice}</p>
+        <p className="price new" ref={this.newestPriceRef} style={{animationDelay: this.calculateDelay(5)}}>{this.props.newPrice}</p>
           <div id="initialPriceContainer" style={{animationDelay: this.calculateDelay(5)}}>
             <p className="price initial">{this.props.initialPrice}</p>
             <div className="stripes">
